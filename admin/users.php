@@ -105,6 +105,7 @@ elseif ($_REQUEST['act'] == 'insert')
     /* 检查权限 */
     admin_priv('users_manage');
     $username = empty($_POST['username']) ? '' : trim($_POST['username']);
+    $nickname = empty($_POST['nickname']) ? '' : trim($_POST['nickname']);
     $password = empty($_POST['password']) ? '' : trim($_POST['password']);
     $email = empty($_POST['email']) ? '' : trim($_POST['email']);
     $sex = empty($_POST['sex']) ? 0 : intval($_POST['sex']);
@@ -180,6 +181,7 @@ elseif ($_REQUEST['act'] == 'insert')
 
     /* 更新会员的其它信息 */
     $other =  array();
+    $other['nickname'] = $nickname;
     $other['credit_line'] = $credit_line;
     $other['user_rank']  = $rank;
     $other['sex']        = $sex;
@@ -343,6 +345,7 @@ elseif ($_REQUEST['act'] == 'update')
 {
     /* 检查权限 */
     admin_priv('users_manage');
+    
     $username = empty($_POST['username']) ? '' : trim($_POST['username']);
     $password = empty($_POST['password']) ? '' : trim($_POST['password']);
     $email = empty($_POST['email']) ? '' : trim($_POST['email']);
